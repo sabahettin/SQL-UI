@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SqlUI.Core\SqlUI.Core.csproj" />
+    <ProjectReference Include="..\SqlUI.Data.SqlServer\SqlUI.Data.SqlServer.csproj" />
+    <ProjectReference Include="..\SqlUI.Data.Sqlite\SqlUI.Data.Sqlite.csproj" />
+    <ProjectReference Include="..\SqlUI.Data.Postgres\SqlUI.Data.Postgres.csproj" />
+    <ProjectReference Include="..\SqlUI.Data.MySql\SqlUI.Data.MySql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\SQL.xshd" />
+    <Resource Include="Resources\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.1.120" />
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+</Project>

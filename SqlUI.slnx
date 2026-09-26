@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SqlUI.App/SqlUI.App.csproj" />
+    <Project Path="src/SqlUI.Core/SqlUI.Core.csproj" />
+    <Project Path="src/SqlUI.Data.MySql/SqlUI.Data.MySql.csproj" />
+    <Project Path="src/SqlUI.Data.Postgres/SqlUI.Data.Postgres.csproj" />
+    <Project Path="src/SqlUI.Data.Sqlite/SqlUI.Data.Sqlite.csproj" />
+    <Project Path="src/SqlUI.Data.SqlServer/SqlUI.Data.SqlServer.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SqlUI.Core.Tests/SqlUI.Core.Tests.csproj" />
+    <Project Path="tests/SqlUI.Data.Sqlite.Tests/SqlUI.Data.Sqlite.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,68 @@
+<Window x:Class="SqlUI.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:services="clr-namespace:SqlUI.App.Services"
+        Title="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[SettingsTitle]}"
+        Width="420" SizeToContent="Height" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{DynamicResource AppWindowBackground}"
+        TextElement.Foreground="{DynamicResource AppForeground}"
+        FontFamily="{Binding Source={x:Static services:EditorSettings.Instance}, Path=FontFamily}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[ThemeLabel]}" Width="140" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ThemeCombo" Width="220" SelectedIndex="0">
+                <ComboBoxItem Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[Light]}"/>
+                <ComboBoxItem Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[Dark]}"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[LanguageLabel]}" Width="140" VerticalAlignment="Center"/>
+            <ComboBox x:Name="LanguageCombo" Width="220" SelectedIndex="0">
+                <ComboBoxItem Content="Türkçe"/>
+                <ComboBoxItem Content="English"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[FontFamilyLabel]}" Width="140" VerticalAlignment="Center"/>
+            <ComboBox x:Name="FontFamilyCombo" Width="220" IsEditable="True">
+                <ComboBoxItem Content="Consolas"/>
+                <ComboBoxItem Content="Cascadia Mono"/>
+                <ComboBoxItem Content="Cascadia Code"/>
+                <ComboBoxItem Content="Courier New"/>
+                <ComboBoxItem Content="Lucida Console"/>
+                <ComboBoxItem Content="JetBrains Mono"/>
+                <ComboBoxItem Content="Fira Code"/>
+                <ComboBoxItem Content="Source Code Pro"/>
+                <ComboBoxItem Content="Hack"/>
+                <ComboBoxItem Content="Ubuntu Mono"/>
+                <ComboBoxItem Content="Roboto Mono"/>
+                <ComboBoxItem Content="Inconsolata"/>
+                <ComboBoxItem Content="Droid Sans Mono"/>
+                <ComboBoxItem Content="Noto Sans Mono"/>
+                <ComboBoxItem Content="Segoe UI"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,16">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[FontSizeLabel]}" Width="140" VerticalAlignment="Center"/>
+            <TextBox x:Name="FontSizeBox" Width="60"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[CancelButton]}"
+                    Width="80" Margin="0,0,8,0" IsCancel="True" Click="Cancel_Click"/>
+            <Button Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[OkButton]}"
+                    Width="80" IsDefault="True" Click="Ok_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

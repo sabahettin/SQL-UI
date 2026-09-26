@@ -1,0 +1,18 @@
+<Window x:Class="SqlUI.App.Views.PromptDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:services="clr-namespace:SqlUI.App.Services"
+        Width="380" SizeToContent="Height" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Background="{DynamicResource AppWindowBackground}"
+        TextElement.Foreground="{DynamicResource AppForeground}"
+        FontFamily="{Binding Source={x:Static services:EditorSettings.Instance}, Path=FontFamily}">
+    <StackPanel Margin="16">
+        <TextBlock x:Name="LabelText" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="InputBox" Margin="0,0,0,16"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="İptal" Width="80" Margin="0,0,8,0" IsCancel="True" Click="Cancel_Click"/>
+            <Button Content="Tamam" Width="80" IsDefault="True" Click="Ok_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

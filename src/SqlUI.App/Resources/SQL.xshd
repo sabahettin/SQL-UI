@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<SyntaxDefinition name="SQL" extensions=".sql" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Keyword" foreground="#0078D7" fontWeight="bold" />
+  <Color name="String" foreground="#A31515" />
+  <Color name="Comment" foreground="#008000" />
+  <Color name="Parameter" foreground="#D69D85" />
+  <Color name="Number" foreground="#098658" />
+
+  <RuleSet ignoreCase="true">
+    <Span color="Comment" begin="--" />
+    <Span color="Comment" multiline="true" begin="/\*" end="\*/" />
+    <Span color="String">
+      <Begin>'</Begin>
+      <End>'</End>
+      <RuleSet>
+        <Span begin="''" end="" />
+      </RuleSet>
+    </Span>
+
+    <Keywords color="Keyword">
+      <Word>SELECT</Word><Word>FROM</Word><Word>WHERE</Word><Word>GROUP</Word><Word>BY</Word>
+      <Word>HAVING</Word><Word>ORDER</Word><Word>DISTINCT</Word><Word>TOP</Word><Word>AS</Word>
+      <Word>INTO</Word><Word>JOIN</Word><Word>INNER</Word><Word>LEFT</Word><Word>RIGHT</Word>
+      <Word>FULL</Word><Word>CROSS</Word><Word>APPLY</Word><Word>ON</Word><Word>AND</Word>
+      <Word>OR</Word><Word>NOT</Word><Word>IN</Word><Word>BETWEEN</Word><Word>LIKE</Word>
+      <Word>EXISTS</Word><Word>IS</Word><Word>NULL</Word><Word>ANY</Word><Word>ALL</Word>
+      <Word>INSERT</Word><Word>VALUES</Word><Word>UPDATE</Word><Word>SET</Word><Word>DELETE</Word>
+      <Word>MERGE</Word><Word>OUTPUT</Word><Word>CREATE</Word><Word>ALTER</Word><Word>DROP</Word>
+      <Word>TRUNCATE</Word><Word>TABLE</Word><Word>VIEW</Word><Word>PROCEDURE</Word><Word>FUNCTION</Word>
+      <Word>INDEX</Word><Word>SCHEMA</Word><Word>DATABASE</Word><Word>PRIMARY</Word><Word>KEY</Word>
+      <Word>FOREIGN</Word><Word>REFERENCES</Word><Word>UNIQUE</Word><Word>CHECK</Word><Word>DEFAULT</Word>
+      <Word>IDENTITY</Word><Word>DECLARE</Word><Word>BEGIN</Word><Word>END</Word><Word>IF</Word>
+      <Word>ELSE</Word><Word>WHILE</Word><Word>BREAK</Word><Word>CONTINUE</Word><Word>RETURN</Word>
+      <Word>TRY</Word><Word>CATCH</Word><Word>THROW</Word><Word>RAISERROR</Word><Word>TRANSACTION</Word>
+      <Word>COMMIT</Word><Word>ROLLBACK</Word><Word>CASE</Word><Word>WHEN</Word><Word>THEN</Word>
+      <Word>CAST</Word><Word>CONVERT</Word><Word>COALESCE</Word><Word>ISNULL</Word><Word>NULLIF</Word>
+      <Word>COUNT</Word><Word>SUM</Word><Word>AVG</Word><Word>MIN</Word><Word>MAX</Word>
+      <Word>OVER</Word><Word>PARTITION</Word><Word>ROW_NUMBER</Word><Word>RANK</Word>
+      <Word>GRANT</Word><Word>REVOKE</Word><Word>DENY</Word><Word>EXECUTE</Word><Word>EXEC</Word>
+      <Word>USE</Word><Word>GO</Word><Word>PRINT</Word><Word>UNION</Word><Word>ASC</Word><Word>DESC</Word>
+      <Word>INT</Word><Word>VARCHAR</Word><Word>NVARCHAR</Word><Word>BIT</Word><Word>DATETIME</Word><Word>DATE</Word>
+    </Keywords>
+
+    <Rule color="Parameter">@[\w]+</Rule>
+    <Rule color="Number">\b\d+(\.\d+)?\b</Rule>
+  </RuleSet>
+</SyntaxDefinition>

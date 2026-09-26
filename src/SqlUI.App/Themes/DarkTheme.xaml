@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="AppWindowBackground" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="AppForeground" Color="#DCDCDC"/>
+    <SolidColorBrush x:Key="AppControlBackground" Color="#252526"/>
+    <SolidColorBrush x:Key="AppBorder" Color="#3F3F46"/>
+    <SolidColorBrush x:Key="AppEditorBackground" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="AppEditorForeground" Color="#DCDCDC"/>
+    <SolidColorBrush x:Key="AppGridHeaderBackground" Color="#2D2D30"/>
+
+    <SolidColorBrush x:Key="AppToolBarBackground" Color="#2D2D30"/>
+    <SolidColorBrush x:Key="AppButtonBackground" Color="#3C3C3C"/>
+    <SolidColorBrush x:Key="AppInputBackground" Color="#333333"/>
+    <SolidColorBrush x:Key="AppHoverBackground" Color="#2A2D2E"/>
+    <SolidColorBrush x:Key="AppSelectedBackground" Color="#094771"/>
+    <SolidColorBrush x:Key="AppAccent" Color="#0E639C"/>
+    <SolidColorBrush x:Key="AppTabBackground" Color="#2D2D2D"/>
+    <SolidColorBrush x:Key="AppTabSelectedBackground" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="AppScrollTrack" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="AppScrollThumb" Color="#4E4E52"/>
+    <SolidColorBrush x:Key="AppScrollThumbHover" Color="#6E6E72"/>
+</ResourceDictionary>

@@ -1,0 +1,28 @@
+<Application x:Class="SqlUI.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SqlUI.App"
+             xmlns:conv="clr-namespace:SqlUI.App.Converters"
+             xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- ControlStyles.xaml: tum native WPF kontrolleri (Window, ToolBar, Button,
+                     ComboBox, TabItem, DataGrid, StatusBar, ContextMenu, TreeView...) icin
+                     DynamicResource'a bagli acik Style'lar - bkz. dosyanin basindaki not. -->
+                <ResourceDictionary Source="Themes/ControlStyles.xaml"/>
+                <!-- Renk anahtarlari: ThemeService bu sozlugu calisma zamaninda degistirir. -->
+                <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <conv:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis"/>
+            <conv:InverseBooleanConverter x:Key="InverseBool"/>
+
+            <Style TargetType="ae:TextEditor">
+                <Setter Property="Background" Value="{DynamicResource AppEditorBackground}"/>
+                <Setter Property="Foreground" Value="{DynamicResource AppEditorForeground}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

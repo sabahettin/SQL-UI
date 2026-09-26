@@ -1,0 +1,86 @@
+<Window x:Class="SqlUI.App.Views.ConnectionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:SqlUI.App.ViewModels"
+        xmlns:services="clr-namespace:SqlUI.App.Services"
+        Title="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[ConnectTitle]}" Height="440" Width="520"
+        Icon="pack://application:,,,/Resources/app.ico"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="{DynamicResource AppWindowBackground}"
+        TextElement.Foreground="{DynamicResource AppForeground}"
+        FontFamily="{Binding Source={x:Static services:EditorSettings.Instance}, Path=FontFamily}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[EngineLabel]}" Width="165" VerticalAlignment="Center"/>
+            <ComboBox ItemsSource="{Binding Providers}" DisplayMemberPath="DisplayName"
+                      SelectedItem="{Binding SelectedProvider}" Width="260"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[ServerFileLabel]}" Width="165" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Server, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+            <Button Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[Browse]}" Margin="6,0,0,0" Padding="8,2"
+                    Command="{Binding BrowseFileCommand}" Visibility="{Binding IsFileBased, Converter={StaticResource BoolToVis}}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10"
+                    Visibility="{Binding IsFileBased, Converter={StaticResource InverseBoolToVis}}">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[DatabaseOptionalLabel]}" Width="165" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Database, UpdateSourceTrigger=PropertyChanged}" Width="260"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10"
+                    Visibility="{Binding ShowServerAuthFields, Converter={StaticResource BoolToVis}}">
+            <TextBlock Text="" Width="165"/>
+            <CheckBox Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[WindowsAuth]}" IsChecked="{Binding IntegratedSecurity}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,0,0,10"
+                    Visibility="{Binding ShowServerAuthFields, Converter={StaticResource BoolToVis}}"
+                    IsEnabled="{Binding IntegratedSecurity, Converter={StaticResource InverseBool}}">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[UserNameLabel]}" Width="165" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Width="260"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,0,0,10"
+                    Visibility="{Binding ShowServerAuthFields, Converter={StaticResource BoolToVis}}"
+                    IsEnabled="{Binding IntegratedSecurity, Converter={StaticResource InverseBool}}">
+            <TextBlock Text="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[PasswordLabel]}" Width="165" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="PasswordBox" Width="260" PasswordChanged="PasswordBox_PasswordChanged"/>
+        </StackPanel>
+
+        <GroupBox Grid.Row="6" Header="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[RecentConnections]}" Margin="0,4,0,4">
+            <ListBox ItemsSource="{Binding RecentConnections}" SelectedItem="{Binding SelectedRecent}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[Delete]}" Padding="6,0" BorderThickness="0" Background="Transparent"
+                                    Command="{Binding DataContext.DeleteRecentCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding}"/>
+                            <TextBlock Text="{Binding Server}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" ToolTip="{Binding Server}"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <TextBlock Grid.Row="7" Text="{Binding StatusMessage}" Foreground="Crimson" TextWrapping="Wrap" Margin="0,4,0,4"/>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[CancelButton]}" Width="80" Margin="0,0,8,0" Command="{Binding CancelCommand}"/>
+            <Button Content="{Binding Source={x:Static services:LocalizationService.Instance}, Path=[Connect]}" Width="80" IsDefault="True" Command="{Binding ConnectCommand}" IsEnabled="{Binding IsConnecting, Converter={StaticResource InverseBool}}"/>
+        </StackPanel>
+    </Grid>
+</Window>
